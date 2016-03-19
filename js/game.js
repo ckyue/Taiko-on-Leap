@@ -263,7 +263,7 @@ function calculatePosition(hand, position, dist){
   // console.log(hand);
   //F
   console.log(dist);
-  if(hand == 'left' && position[0] <= 0 && position[2] >= -70){
+  if(hand == 'left' && position[0] <= 0 && position[2] >= 0){
     savedPositionF[counterF] = position;
     // console.log(savedPositionF);
     // if(savedPositionF[0] == "0" || savedPositionF[1] == "0"){
@@ -288,7 +288,7 @@ function calculatePosition(hand, position, dist){
   }
 
   //J
-  if(hand == 'right' && position[0] > 0 && position[2] >= -70){
+  if(hand == 'right' && position[0] > 0 && position[2] >= 0){
     savedPositionJ[counterJ] = position;
 
     isPressedJ = finiteStateMachineJ(savedPositionJ);
@@ -308,7 +308,7 @@ function calculatePosition(hand, position, dist){
   }
 
   //E
-  if(hand == 'left' && position[0] <= 0 && position[2] < -70){
+  if(hand == 'left' && position[0] <= 0 && position[2] < 0){
     savedPositionE[counterE] = position;
 
     isPressedE = finiteStateMachineE(savedPositionE);
@@ -328,7 +328,7 @@ function calculatePosition(hand, position, dist){
   }
 
   //I
-  if(hand == 'right' && position[0] > 0 && position[2] < -70){
+  if(hand == 'right' && position[0] > 0 && position[2] < 0){
     savedPositionI[counterI] = position;
 
     isPressedI = finiteStateMachineI(savedPositionI);
