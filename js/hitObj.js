@@ -1,5 +1,3 @@
-var score = 0;
-
 //leapmotion reader
 function concatData(id, data) {
   return id + ": " + data + "<br>";
@@ -70,7 +68,7 @@ function calculatePosition(hand, position){
   // console.log(hand);
 
   //F
-  if(hand == 'left' && position[0] <= 0 && position[2] >= -60){
+  if(hand == 'left' && position[0] <= 0 && position[2] >= -70){
     savedPositionF[counterF] = position;
     // console.log(savedPositionF);
     // if(savedPositionF[0] == "0" || savedPositionF[1] == "0"){
@@ -80,6 +78,7 @@ function calculatePosition(hand, position){
     isPressedF = finiteStateMachineF(savedPositionF);
     if(isPressedF == 1){
       console.log("F pressed");
+      document.getElementById("red").play();
     }
     counterF++;
     if(counterF == 2){
@@ -88,12 +87,13 @@ function calculatePosition(hand, position){
   }
 
   //J
-  if(hand == 'right' && position[0] >= 0 && position[2] >= -60){
+  if(hand == 'right' && position[0] > 0 && position[2] >= -70){
     savedPositionJ[counterJ] = position;
 
     isPressedJ = finiteStateMachineJ(savedPositionJ);
     if(isPressedJ == 1){
       console.log("J pressed");
+      document.getElementById("red").play();
     }
     counterJ++;
     if(counterJ == 2){
@@ -102,12 +102,13 @@ function calculatePosition(hand, position){
   }
 
   //E
-  if(hand == 'left' && position[0] <= 0 && position[2] < -60){
+  if(hand == 'left' && position[0] <= 0 && position[2] < -70){
     savedPositionE[counterE] = position;
 
     isPressedE = finiteStateMachineE(savedPositionE);
     if(isPressedE == 1){
       console.log("E pressed");
+      document.getElementById("blue").play();
     }
     counterF++;
     if(counterE == 2){
@@ -116,12 +117,13 @@ function calculatePosition(hand, position){
   }
 
   //I
-  if(hand == 'right' && position[0] >= 0 && position[2] < -60){
+  if(hand == 'right' && position[0] > 0 && position[2] < -70){
     savedPositionI[counterI] = position;
 
     isPressedI = finiteStateMachineI(savedPositionI);
     if(isPressedI == 1){
       console.log("I pressed");
+      document.getElementById("blue").play();
     }
     counterI++;
     if(counterI == 2){
@@ -259,7 +261,7 @@ function finiteStateMachineI(position){
 //   }
 // }
 
-//check if hitted
+//alternative checking
 // window.onkeydown = function (event){
 //   if(event.keyCode == 70){
 //     console.log("left red");

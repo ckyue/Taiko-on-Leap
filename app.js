@@ -1,4 +1,4 @@
-import Example from "./js/game.js";
+import hitObj from "./js/hitObj.js";
 
 
 document.getElementById("start").addEventListener("click", play);
