@@ -26,54 +26,63 @@ beatsCtx.lineTo(150,100)
 beatsCtx.strokeStyle = "#000"
 beatsCtx.stroke()
 
+var playgroundCanvas = document.getElementById("playground");
+var playgroundCtx = playgroundCanvas.getContext("2d");
+var bgImage = new Image();
+        bgImage.onload = function() {
+          playgroundCtx.drawImage(this, 0, 0);
+        };
+
+        bgImage.src = "./images/bg.jpeg";
 
 var n;
 var approachRate;
-var vy = 40;
-var hitObjects = new Array(180,180,120,180,180,180,120,180,120,180,180,180,120,180,120,180,120,120,180,180,
-180,180,120,180,180,180,120,180,120,180,
-180,180,120,180,120,180,120,120,180,180,
-180,180,120,180,180,180,120,180,120,180,
-180,180,120,180,120,180,120,120,180,180,
-180,180,120,180,180,180,120,180,120,180,
-180,180,120,180,120,180,120,120,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,120,120,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-120,180,180,120,180,1200,
-180,120,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180,
-180,180,180,180,180,180,180,180);
+var vy = 65;
+var hitObjects = new Array(60,60,30,60,60,60,30,60,30,60,
+60,60,30,60,30,60,30,30,60,60,
+60,60,30,60,60,60,30,60,30,60,
+60,60,30,60,30,60,30,30,60,60,
+60,60,30,60,60,60,30,60,30,60,
+60,60,30,60,30,60,30,30,60,60,
+60,60,30,60,60,60,30,60,30,60,
+60,60,30,60,30,60,30,30,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,120,120,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+120,60,60,120,60,300,
+60,120,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60,
+60,60,60,60,60,60,60,60);
 var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,
 0,0,0,1,0,1,0,1,0,0,
 0,0,0,1,0,0,0,1,0,1,
@@ -121,7 +130,7 @@ var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,
 0,1,1,0,1,1,0,1);
 var dist= 280;
 var isover = false;
-export function drawTaiko(){
+function drawTaiko(){
   beatsCtx.clearRect(0,0,500,100);
   approachRate = dist;
   if(approachRate<0){
@@ -134,8 +143,10 @@ export function drawTaiko(){
     hitObjects.shift();
     typeOfTaiko.shift();
   }
-  approachRate -= 2;
+  approachRate -= 3;
   dist = approachRate;
+  checkHit(dist);
+  // console.log(dist);
   for(n=0;n<20;n++){
     if(typeOfTaiko[n] == 0){
       beatsCtx.drawImage(redTaiko,approachRate,vy);
@@ -148,7 +159,7 @@ export function drawTaiko(){
     }
   }
   if(!isover){
-    setTimeout(drawTaiko,5);
+    setTimeout(drawTaiko,20);
   }
 }
 
@@ -203,7 +214,8 @@ Leap.loop(options, function(frame) {
     //   smoothedCurrentPositionValues[i] += (currentPositionValues[i] - smoothedCurrentPositionValues[i]) / lowPassFilterConst;
     // }
     // calculatePosition(handType, smoothedCurrentPositionValues);
-    calculatePosition(handType, currentPositionValues);
+    // console.log(dist);
+    calculatePosition(handType, currentPositionValues, dist);
 
 
     frameString += handString;
@@ -225,7 +237,7 @@ var drumCtx = drumCanvas.getContext('2d');
 
 function drawRed(){
   drumCtx.beginPath();
-  drumCtx.arc(220,240, 180, 0, Math.PI, false);
+  drumCtx.arc(180,200, 140, 0, Math.PI, false);
   drumCtx.closePath();
   drumCtx.lineWidth = 5;
   drumCtx.fillStyle = '#E5372C';
@@ -234,7 +246,7 @@ function drawRed(){
 }
 function drawBlue(){
   drumCtx.beginPath();
-  drumCtx.arc(220,240, 180, Math.PI, 2*Math.PI);
+  drumCtx.arc(180,200, 140, Math.PI, 2*Math.PI);
   drumCtx.closePath();
   drumCtx.lineWidth = 5;
   drumCtx.fillStyle = '#67BABE';
@@ -242,10 +254,15 @@ function drawBlue(){
   setTimeout(function() {drumCtx.clearRect(0,0,440,440);}, 100);
 }
 
-function calculatePosition(hand, position){
+function checkHit(dist){
+  // console.log(dist);
+  return dist;
+}
+function calculatePosition(hand, position, dist){
   // console.log(positions[0]);
   // console.log(hand);
   //F
+  console.log(dist);
   if(hand == 'left' && position[0] <= 0 && position[2] >= -70){
     savedPositionF[counterF] = position;
     // console.log(savedPositionF);
@@ -258,7 +275,8 @@ function calculatePosition(hand, position){
       console.log("F pressed");
       document.getElementById("red").play();
       drawRed();
-      if(dist<350 && dist>250){
+      // distance = checkHit();
+      if(dist<60 && dist>20){
 				score++;
 				document.getElementById("score").innerHTML = score;
 			}
@@ -278,7 +296,7 @@ function calculatePosition(hand, position){
       console.log("J pressed");
       document.getElementById("red").play();
       drawRed();
-      if(dist<350 && dist>250){
+      if(dist<60 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
       }
@@ -298,7 +316,7 @@ function calculatePosition(hand, position){
       console.log("E pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<350 && dist>250){
+      if(dist<60 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
       }
@@ -318,7 +336,7 @@ function calculatePosition(hand, position){
       console.log("I pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<550 && dist>350){
+      if(dist<60 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
       }
