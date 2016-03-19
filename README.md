@@ -7,6 +7,9 @@ To-Do List:
 <p>get scoring working</p>
 <p>sound effect, visual effects, background UI</p>
 <p>probably: online scoreboard, drop mp3 or osz to start</p>
-
+<br>
 Issues:
 <p>hit sounds are un-overlapped</p>
+<br>
+Notes:
+finger:(horizontal, height, depth)

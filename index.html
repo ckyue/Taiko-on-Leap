@@ -5,12 +5,15 @@
 	<link href="materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+	<script src="https://js.leapmotion.com/leap-0.6.4.js"></script>
 </head>
 <body>
 	<canvas id="playground" width="1440" height="900"></canvas>
 	<canvas id="beats" width="1440" height="240" style="position:absolute; top:150px; left:112px"></canvas>
+	<canvas id="drum"  width="440" height="440" style="position:absolute; top:400px; left:670px"></canvas>
 	<button id="start">Start</button>
 	<p id="score">0</p>
+	<p id="output"></p>
 	<script type="text/javascript" src="bundle.js"></script>
 	<audio id="red" src="./sounds/red.mp3"></audio>
 	<audio id="blue" src="./sounds/blue.mp3"></audio>

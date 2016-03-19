@@ -1,14 +1,9 @@
-#playground{
+#playground, #beats, #drum{
   display: block;
   margin: 20px auto;
   border: 1px solid black;
 }
 
-#beats{
-  display: block;
-  margin: 20px auto;
-  border: 1px solid black;
-}
 #start{
   position: relative;
   margin-left: 50%;
