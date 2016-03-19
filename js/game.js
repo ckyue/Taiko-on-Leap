@@ -262,14 +262,61 @@ function calculatePosition(hand, position, dist){
   // console.log(positions[0]);
   // console.log(hand);
   //F
-  console.log(dist);
-  if(hand == 'left' && position[0] <= 0 && position[2] >= 0){
+  function playScoreSoundEffect(score){
+    console.log(score);
+    switch(score){
+      case 10:
+        document.getElementById("comboburst-0").play();
+        break;
+        case 20:
+          document.getElementById("comboburst-1").play();
+          break;
+          case 30:
+            document.getElementById("comboburst-2").play();
+            break;
+            case 40:
+              document.getElementById("comboburst-3").play();
+              break;
+              case 50:
+                document.getElementById("comboburst-4").play();
+                break;
+                case 60:
+                  document.getElementById("comboburst-5").play();
+                  break;
+                  case 70:
+                    document.getElementById("comboburst-6").play();
+                    break;
+                    case 80:
+                      document.getElementById("comboburst-7").play();
+                      break;
+                      case 90:
+                        document.getElementById("comboburst-8").play();
+                        break;
+                        case 100:
+                          document.getElementById("comboburst-9").play();
+                          break;
+                          case 110:
+                            document.getElementById("comboburst-10").play();
+                            break;
+                            case 120:
+                              document.getElementById("comboburst-11").play();
+                              break;
+                              case 130:
+                                document.getElementById("comboburst-12").play();
+                                break;
+
+    }
+  }
+
+  if(hand == 'left' && position[0] <= 0 && position[2] >= -70){
     savedPositionF[counterF] = position;
     // console.log(savedPositionF);
     // if(savedPositionF[0] == "0" || savedPositionF[1] == "0"){
     //   console.log("second didnt passed");
     //   return 0;
     // }
+
+
     isPressedF = finiteStateMachineF(savedPositionF);
     if(isPressedF == 1){
       console.log("F pressed");
@@ -279,6 +326,7 @@ function calculatePosition(hand, position, dist){
       if(dist<50 && dist>20){
 				score++;
 				document.getElementById("score").innerHTML = score;
+        playScoreSoundEffect(score);
 			}
     }
     counterF++;
@@ -288,7 +336,7 @@ function calculatePosition(hand, position, dist){
   }
 
   //J
-  if(hand == 'right' && position[0] > 0 && position[2] >= 0){
+  if(hand == 'right' && position[0] > 0 && position[2] >= -70){
     savedPositionJ[counterJ] = position;
 
     isPressedJ = finiteStateMachineJ(savedPositionJ);
@@ -299,6 +347,7 @@ function calculatePosition(hand, position, dist){
       if(dist<50 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
+        playScoreSoundEffect(score);
       }
     }
     counterJ++;
@@ -308,7 +357,7 @@ function calculatePosition(hand, position, dist){
   }
 
   //E
-  if(hand == 'left' && position[0] <= 0 && position[2] < 0){
+  if(hand == 'left' && position[0] <= 0 && position[2] < -70){
     savedPositionE[counterE] = position;
 
     isPressedE = finiteStateMachineE(savedPositionE);
@@ -319,6 +368,7 @@ function calculatePosition(hand, position, dist){
       if(dist<50 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
+        playScoreSoundEffect(score);
       }
     }
     counterF++;
@@ -328,7 +378,7 @@ function calculatePosition(hand, position, dist){
   }
 
   //I
-  if(hand == 'right' && position[0] > 0 && position[2] < 0){
+  if(hand == 'right' && position[0] > 0 && position[2] < -70){
     savedPositionI[counterI] = position;
 
     isPressedI = finiteStateMachineI(savedPositionI);
@@ -339,6 +389,7 @@ function calculatePosition(hand, position, dist){
       if(dist<50 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
+        playScoreSoundEffect(score);
       }
     }
     counterI++;
