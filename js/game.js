@@ -143,7 +143,7 @@ function drawTaiko(){
     hitObjects.shift();
     typeOfTaiko.shift();
   }
-  approachRate -= 3;
+  approachRate -= 5;
   dist = approachRate;
   checkHit(dist);
   // console.log(dist);
@@ -265,50 +265,50 @@ function calculatePosition(hand, position, dist){
   function playScoreSoundEffect(score){
     console.log(score);
     switch(score){
-      case 10:
+      case 5:
         document.getElementById("comboburst-0").play();
         break;
-        case 20:
+        case 10:
           document.getElementById("comboburst-1").play();
           break;
-          case 30:
+          case 15:
             document.getElementById("comboburst-2").play();
             break;
-            case 40:
+            case 20:
               document.getElementById("comboburst-3").play();
               break;
-              case 50:
+              case 25:
                 document.getElementById("comboburst-4").play();
                 break;
-                case 60:
+                case 30:
                   document.getElementById("comboburst-5").play();
                   break;
-                  case 70:
+                  case 35:
                     document.getElementById("comboburst-6").play();
                     break;
-                    case 80:
+                    case 40:
                       document.getElementById("comboburst-7").play();
                       break;
-                      case 90:
+                      case 45:
                         document.getElementById("comboburst-8").play();
                         break;
-                        case 100:
+                        case 50:
                           document.getElementById("comboburst-9").play();
                           break;
-                          case 110:
+                          case 55:
                             document.getElementById("comboburst-10").play();
                             break;
-                            case 120:
+                            case 60:
                               document.getElementById("comboburst-11").play();
                               break;
-                              case 130:
+                              case 65:
                                 document.getElementById("comboburst-12").play();
                                 break;
 
     }
   }
 
-  if(hand == 'left' && position[0] <= 0 && position[2] >= -70){
+  if(/*hand == 'left' && */position[0] <= 0 && position[2] >= -70){
     savedPositionF[counterF] = position;
     // console.log(savedPositionF);
     // if(savedPositionF[0] == "0" || savedPositionF[1] == "0"){
@@ -336,7 +336,7 @@ function calculatePosition(hand, position, dist){
   }
 
   //J
-  if(hand == 'right' && position[0] > 0 && position[2] >= -70){
+  if(/*hand == 'right' && */position[0] > 0 && position[2] >= -70){
     savedPositionJ[counterJ] = position;
 
     isPressedJ = finiteStateMachineJ(savedPositionJ);
@@ -357,7 +357,7 @@ function calculatePosition(hand, position, dist){
   }
 
   //E
-  if(hand == 'left' && position[0] <= 0 && position[2] < -70){
+  if(/*hand == 'left' && */position[0] <= 0 && position[2] < -70){
     savedPositionE[counterE] = position;
 
     isPressedE = finiteStateMachineE(savedPositionE);
@@ -378,7 +378,7 @@ function calculatePosition(hand, position, dist){
   }
 
   //I
-  if(hand == 'right' && position[0] > 0 && position[2] < -70){
+  if(/*hand == 'right' && */position[0] > 0 && position[2] < -70){
     savedPositionI[counterI] = position;
 
     isPressedI = finiteStateMachineI(savedPositionI);

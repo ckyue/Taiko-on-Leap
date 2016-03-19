@@ -12,10 +12,11 @@
 	<canvas id="playground" width="1440" height="900"></canvas>
 	<canvas id="beats" width="1150" height="240" style="position:absolute; top:250px; left:250px"></canvas>
 	<canvas id="drum"  width="350" height="350" style="position:absolute; top:500px; left:480px"></canvas>
-	<button id="start">Start</button>
+	<!-- <button id="start">Start</button> -->
 	<p id="score">0</p>
 	<p id="output"></p>
 	<script type="text/javascript" src="bundle.js"></script>
+	<audio id="bg-song" src="./sounds/saika.mp3"></audio>
 	<audio id="red" src="./sounds/red.mp3"></audio>
 	<audio id="blue" src="./sounds/blue.mp3"></audio>
 	<audio id="comboburst-0" src="./sounds/comboburst-0.wav"></audio>
@@ -31,6 +32,10 @@
 	<audio id="comboburst-10" src="./sounds/comboburst-10.wav"></audio>
 	<audio id="comboburst-11" src="./sounds/comboburst-11.wav"></audio>
 	<audio id="comboburst-12" src="./sounds/comboburst-12.wav"></audio>
-
+	<script type="text/javascript">
+		window.onload = function(){
+		  document.getElementById("bg-song").play();
+		}
+	</script>
 </body>
 </html>
