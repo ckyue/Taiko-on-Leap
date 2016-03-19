@@ -50,20 +50,24 @@ bgImage.src = "./images/bg.png";
 
 
 //define Beatmap notes
-var hitObjects = new Array(120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,300,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120);
-var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,0,1,0,0,0,0,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1);
+var hitObjects = new Array(120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,300,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120);
+var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1);
+//,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,0,1,0,0,0,0,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1
 
 //draw beatmap notes(Taikos)
 var approachRate;
 var yOffset = 65;
-var dist= 250;
+var dist= 350;
 var isover = false;
+var playerName;
+
 function drawTaiko(){
   beatsCtx.clearRect(0,0,1500,300);
   approachRate = dist;
   if(approachRate<0){
     if(typeOfTaiko.length < 2){
-      alert("over");
+      prompt("Congratulations! Enter Your Name HERE!!", "Wearhack Waterloo 2016");
+      //send to database;
       isover = true;
       return;
     }
@@ -71,7 +75,7 @@ function drawTaiko(){
     hitObjects.shift();
     typeOfTaiko.shift();
   }
-  approachRate -= 5;
+  approachRate -= 6;
   dist = approachRate;
   checkHit(dist);
   // console.log(dist);
@@ -234,43 +238,43 @@ function calculatePosition(hand, position, dist){
 
     console.log(score);
     switch(score){
-      case 5:
+      case 10:
         document.getElementById("comboburst-0").play();
         break;
-        case 10:
+        case 20:
           document.getElementById("comboburst-1").play();
           break;
-          case 15:
+          case 30:
             document.getElementById("comboburst-2").play();
             break;
-            case 20:
+            case 40:
               document.getElementById("comboburst-3").play();
               break;
-              case 25:
+              case 50:
                 document.getElementById("comboburst-4").play();
                 break;
-                case 30:
+                case 60:
                   document.getElementById("comboburst-5").play();
                   break;
-                  case 35:
+                  case 65:
                     document.getElementById("comboburst-6").play();
                     break;
-                    case 40:
+                    case 70:
                       document.getElementById("comboburst-7").play();
                       break;
-                      case 45:
+                      case 75:
                         document.getElementById("comboburst-8").play();
                         break;
-                        case 50:
+                        case 80:
                           document.getElementById("comboburst-9").play();
                           break;
-                          case 55:
+                          case 85:
                             document.getElementById("comboburst-10").play();
                             break;
-                            case 60:
+                            case 90:
                               document.getElementById("comboburst-11").play();
                               break;
-                              case 65:
+                              case 95:
                                 document.getElementById("comboburst-12").play();
                                 break;
 
@@ -388,12 +392,12 @@ function finiteStateMachineF(position){
     return 0;
   }
   // console.log(position);
-  if(position[1][1] - position[0][1] > 25)//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 20)//need more consideration on identifying patterns
     {
       // console.log("up");
         upF = true;//change the state
     }
-  else if(position[0][1] - position[1][1] > 25)//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 20)//need more consideration on identifying patterns
     {
         downF = true;//change the state
     }
@@ -412,11 +416,11 @@ function finiteStateMachineJ(position){
     // console.log("second didnt passed");
     return 0;
   }
-  if(position[1][1] - position[0][1] > 25)//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 20)//need more consideration on identifying patterns
     {
         upJ = true;//change the state
     }
-  else if(position[0][1] - position[1][1] > 25)//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 20)//need more consideration on identifying patterns
     {
         downJ = true;//change the state
     }
@@ -435,11 +439,11 @@ function finiteStateMachineE(position){
     // console.log("second didnt passed");
     return 0;
   }
-  if(position[1][1] - position[0][1] > 25)//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 20)//need more consideration on identifying patterns
     {
         upE = true;//change the state
     }
-  else if(position[0][1] - position[1][1] > 25)//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 20)//need more consideration on identifying patterns
     {
         downE = true;//change the state
     }
@@ -458,11 +462,11 @@ function finiteStateMachineI(position){
     // console.log("second didnt passed");
     return 0;
   }
-  if(position[1][1] - position[0][1] > 25)//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 20)//need more consideration on identifying patterns
     {
         upI = true;//change the state
     }
-  else if(position[0][1] - position[1][1] > 25)//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 20)//need more consideration on identifying patterns
     {
         downI = true;//change the state
     }
