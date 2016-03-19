@@ -38,51 +38,51 @@ var bgImage = new Image();
 var n;
 var approachRate;
 var vy = 65;
-var hitObjects = new Array(60,60,30,60,60,60,30,60,30,60,
-60,60,30,60,30,60,30,30,60,60,
-60,60,30,60,60,60,30,60,30,60,
-60,60,30,60,30,60,30,30,60,60,
-60,60,30,60,60,60,30,60,30,60,
-60,60,30,60,30,60,30,30,60,60,
-60,60,30,60,60,60,30,60,30,60,
-60,60,30,60,30,60,30,30,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,120,120,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-120,60,60,120,60,300,
-60,120,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60,
-60,60,60,60,60,60,60,60);
+var hitObjects = new Array(120,120,60,120,120,120,60,120,60,120,
+120,120,60,120,60,120,60,60,120,120,
+120,120,60,120,120,120,60,120,60,120,
+120,120,60,120,60,120,60,60,120,120,
+120,120,60,120,120,120,60,120,60,120,
+120,120,60,120,60,120,60,60,120,120,
+120,120,60,120,120,120,60,120,60,120,
+120,120,60,120,60,120,60,60,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,300,
+120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120,
+120,120,120,120,120,120,120,120);
 var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,
 0,0,0,1,0,1,0,1,0,0,
 0,0,0,1,0,0,0,1,0,1,
@@ -276,7 +276,7 @@ function calculatePosition(hand, position, dist){
       document.getElementById("red").play();
       drawRed();
       // distance = checkHit();
-      if(dist<60 && dist>20){
+      if(dist<50 && dist>20){
 				score++;
 				document.getElementById("score").innerHTML = score;
 			}
@@ -296,7 +296,7 @@ function calculatePosition(hand, position, dist){
       console.log("J pressed");
       document.getElementById("red").play();
       drawRed();
-      if(dist<60 && dist>20){
+      if(dist<50 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
       }
@@ -316,7 +316,7 @@ function calculatePosition(hand, position, dist){
       console.log("E pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<60 && dist>20){
+      if(dist<50 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
       }
@@ -336,7 +336,7 @@ function calculatePosition(hand, position, dist){
       console.log("I pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<60 && dist>20){
+      if(dist<50 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
       }
@@ -364,12 +364,12 @@ function finiteStateMachineF(position){
     return 0;
   }
   // console.log(position);
-  if(position[0][2] < position[1][2])//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 30)//need more consideration on identifying patterns
     {
       // console.log("up");
         upF = true;//change the state
     }
-  else if(position[0][2] > position[1][2])//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 30)//need more consideration on identifying patterns
     {
         downF = true;//change the state
     }
@@ -388,11 +388,11 @@ function finiteStateMachineJ(position){
     // console.log("second didnt passed");
     return 0;
   }
-  if(position[0][2] < position[1][2])//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 30)//need more consideration on identifying patterns
     {
         upJ = true;//change the state
     }
-  else if(position[0][2] > position[1][2])//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 30)//need more consideration on identifying patterns
     {
         downJ = true;//change the state
     }
@@ -411,11 +411,11 @@ function finiteStateMachineE(position){
     // console.log("second didnt passed");
     return 0;
   }
-  if(position[0][2] < position[1][2])//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 30)//need more consideration on identifying patterns
     {
         upE = true;//change the state
     }
-  else if(position[0][2] > position[1][2])//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 30)//need more consideration on identifying patterns
     {
         downE = true;//change the state
     }
@@ -434,11 +434,11 @@ function finiteStateMachineI(position){
     // console.log("second didnt passed");
     return 0;
   }
-  if(position[0][2] < position[1][2])//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 30)//need more consideration on identifying patterns
     {
         upI = true;//change the state
     }
-  else if(position[0][2] > position[1][2])//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 30)//need more consideration on identifying patterns
     {
         downI = true;//change the state
     }
@@ -482,7 +482,7 @@ function finiteStateMachineI(position){
 //   if(event.keyCode == 70){
 //     console.log("left red");
 //     document.getElementById("red").play();
-//     if(dist<60 && dist>50 && taikoType[0]==0){
+//     if(dist<120 && dist>50 && taikoType[0]==0){
 //       score++;
 //       document.getElementById("score").value = score;
 //     }
@@ -490,7 +490,7 @@ function finiteStateMachineI(position){
 //   if(event.keyCode == 74){
 //     console.log("right red");
 //     document.getElementById("red").play();
-//     if(dist<60 && dist>50 && taikoType[0]==0){
+//     if(dist<120 && dist>50 && taikoType[0]==0){
 //       score++;
 //       document.getElementById("score").value = score;
 //     }
@@ -498,7 +498,7 @@ function finiteStateMachineI(position){
 //   if(event.keyCode == 69){
 //     console.log("left blue");
 //     document.getElementById("blue").play();
-//     if(dist<60 && dist>50 && taikoType[0]==1){
+//     if(dist<120 && dist>50 && taikoType[0]==1){
 //       score++;
 //       document.getElementById("score").value = score;
 //     }
@@ -506,7 +506,7 @@ function finiteStateMachineI(position){
 //   if(event.keyCode == 73){
 //     console.log("right blue");
 //     document.getElementById("blue").play();
-//     if(dist<60 && dist>50 && taikoType[0]==1){
+//     if(dist<120 && dist>50 && taikoType[0]==1){
 //       score++;
 //       document.getElementById("score").value = score;
 //     }
