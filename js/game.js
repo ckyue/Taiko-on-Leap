@@ -1,7 +1,17 @@
+var controller = new Leap.Controller();
+
+controller.on('deviceConnected', function() {
+  console.log("A Leap device has been connected.");
+  doMyOwnStuff();
+});
+
+controller.on('deviceDisconnected', function() {
+  console.log("A Leap device has been disconnected.");
+});
+
 var score = 0;
 //draw taikos
 var numOfTaikoType = 2;
-var beatsCanvas = document.getElementById("beats");
 var redTaiko = new Image();
 var counterTaiko = 0;
 redTaiko.src="./images/redTaiko.png";
@@ -21,12 +31,13 @@ blueTaiko.onload = function (){
 }
 
 //draw background
+var beatsCanvas = document.getElementById("beats");
 var beatsCtx = beatsCanvas.getContext("2d");
 beatsCtx.beginPath();
-beatsCtx.moveTo(150,300)
-beatsCtx.lineTo(150,100)
-beatsCtx.strokeStyle = "#000"
-beatsCtx.stroke()
+beatsCtx.moveTo(150,300);
+beatsCtx.lineTo(150,100);
+beatsCtx.strokeStyle = "#000";
+beatsCtx.stroke();
 var playgroundCanvas = document.getElementById("playground");
 var playgroundCtx = playgroundCanvas.getContext("2d");
 var bgImage = new Image();
@@ -34,6 +45,8 @@ bgImage.onload = function() {
   playgroundCtx.drawImage(this, 0, 0);
 };
 bgImage.src = "./images/bg.png";
+
+
 
 
 //define Beatmap notes
@@ -108,6 +121,28 @@ var isPressedI = 0;
 // Leap.loop uses browser's requestAnimationFrame
 var options = { enableGestures: true };
 
+//draw status
+var leapStatusCanvas = document.getElementById("leapStatus");
+var leapStatusCtx = leapStatusCanvas.getContext("2d");
+leapStatusCtx.font = "15px Arial";
+leapStatusCtx.fillStyle = "#fff";
+var statusString;
+var handStatusString;
+var fingerStatusString;
+
+function drawStatus(hand, finger){
+  // alert(score)
+  console.log(finger);
+  leapStatusCtx.clearRect(0,0,leapStatusCanvas.width,leapStatusCanvas.height);
+  statusString = "LeapMotion Status: " + "Connected";
+  leapStatusCtx.fillText(statusString, 0, 30);
+  handStatusString = "Current Hitting Hand: " + hand;
+  leapStatusCtx.fillText(handStatusString,0,60);
+  fingerStatusString = "Hand Location: " + finger;
+  leapStatusCtx.fillText(fingerStatusString,0,90);
+
+}
+
 // Main Leap Loop
 Leap.loop(options, function(frame) {
   frameString = concatData("num_hands", frame.hands.length);
@@ -132,9 +167,9 @@ Leap.loop(options, function(frame) {
     // console.log(dist);
     calculatePosition(handType, currentPositionValues, dist);
 
-
     frameString += handString;
     frameString += fingerString;
+    drawStatus(handType, currentPositionValues);
   }
 
   output.innerHTML = frameString;
@@ -155,7 +190,7 @@ function drawRed(){
   drumCtx.arc(180,200, 140, 0, Math.PI, false);
   drumCtx.closePath();
   drumCtx.lineWidth = 5;
-  drumCtx.fillStyle = '#E5372C';
+  drumCtx.fillStyle = '#F5001C';
   drumCtx.fill();
   setTimeout(function() {drumCtx.clearRect(0,0,440,440);}, 100);
 }
@@ -164,7 +199,7 @@ function drawBlue(){
   drumCtx.arc(180,200, 140, Math.PI, 2*Math.PI);
   drumCtx.closePath();
   drumCtx.lineWidth = 5;
-  drumCtx.fillStyle = '#67BABE';
+  drumCtx.fillStyle = '#33C5FF';
   drumCtx.fill();
   setTimeout(function() {drumCtx.clearRect(0,0,440,440);}, 100);
 }
@@ -173,11 +208,30 @@ function checkHit(dist){
   // console.log(dist);
   return dist;
 }
+
+//draw score
+var scoreCanvas = document.getElementById("score");
+var scoreCtx = scoreCanvas.getContext("2d");
+scoreCtx.font = "55px Arial";
+scoreCtx.fillStyle = "#E6377B";
+scoreCtx.textAlign = "center";
+var scoreString;
+
+function drawScore(score){
+  // alert(score)
+  scoreCtx.clearRect(0,0,scoreCanvas.width,scoreCanvas.height);
+  scoreString = "Your Score: " + score;
+  scoreCtx.fillText(scoreString, scoreCanvas.width/2, scoreCanvas.height/2);
+}
+
+
 function calculatePosition(hand, position, dist){
   // console.log(positions[0]);
   // console.log(hand);
+
   //F
   function playScoreSoundEffect(score){
+
     console.log(score);
     switch(score){
       case 5:
@@ -234,7 +288,7 @@ function calculatePosition(hand, position, dist){
 
     isPressedF = finiteStateMachineF(savedPositionF);
     if(isPressedF == 1){
-      console.log("F pressed");
+      // console.log("F pressed");
       document.getElementById("red").play();
       drawRed();
       // distance = checkHit();
@@ -242,6 +296,7 @@ function calculatePosition(hand, position, dist){
 				score++;
 				document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
+        drawScore(score);
 			}
     }
     counterF++;
@@ -256,13 +311,14 @@ function calculatePosition(hand, position, dist){
 
     isPressedJ = finiteStateMachineJ(savedPositionJ);
     if(isPressedJ == 1){
-      console.log("J pressed");
+      // console.log("J pressed");
       document.getElementById("red").play();
       drawRed();
       if(dist<50 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
+        drawScore(score);
       }
     }
     counterJ++;
@@ -277,13 +333,14 @@ function calculatePosition(hand, position, dist){
 
     isPressedE = finiteStateMachineE(savedPositionE);
     if(isPressedE == 1){
-      console.log("E pressed");
+      // console.log("E pressed");
       document.getElementById("blue").play();
       drawBlue();
       if(dist<50 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
+        drawScore(score);
       }
     }
     counterF++;
@@ -298,13 +355,14 @@ function calculatePosition(hand, position, dist){
 
     isPressedI = finiteStateMachineI(savedPositionI);
     if(isPressedI == 1){
-      console.log("I pressed");
+      // console.log("I pressed");
       document.getElementById("blue").play();
       drawBlue();
       if(dist<50 && dist>20){
         score++;
         document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
+        drawScore(score);
       }
     }
     counterI++;

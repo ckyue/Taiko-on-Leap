@@ -14,3 +14,4 @@ Issues:
 <br>
 Notes:
 finger:(horizontal, height, depth)
+first beat and music should be synchronized
