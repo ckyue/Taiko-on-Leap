@@ -1,44 +1,48 @@
 var score = 0;
-var picnum = 2;
+//draw taikos
+var numOfTaikoType = 2;
 var beatsCanvas = document.getElementById("beats");
 var redTaiko = new Image();
-var cant = 0;
+var counterTaiko = 0;
 redTaiko.src="./images/redTaiko.png";
 redTaiko.onload = function (){
-  cant++;
-  if(cant > picnum - 1){
+  counterTaiko++;
+  if(counterTaiko > numOfTaikoType - 1){
     drawTaiko();
   }
 }
 var blueTaiko = new Image();
 blueTaiko.src="./images/blueTaiko.png";
 blueTaiko.onload = function (){
-  cant++;
-  if(cant > picnum - 1){
+  counterTaiko++;
+  if(counterTaiko > numOfTaikoType - 1){
     drawTaiko();
   }
 }
 
+//draw background
 var beatsCtx = beatsCanvas.getContext("2d");
 beatsCtx.beginPath();
 beatsCtx.moveTo(150,300)
 beatsCtx.lineTo(150,100)
 beatsCtx.strokeStyle = "#000"
 beatsCtx.stroke()
-
 var playgroundCanvas = document.getElementById("playground");
 var playgroundCtx = playgroundCanvas.getContext("2d");
 var bgImage = new Image();
-        bgImage.onload = function() {
-          playgroundCtx.drawImage(this, 0, 0);
-        };
+bgImage.onload = function() {
+  playgroundCtx.drawImage(this, 0, 0);
+};
+bgImage.src = "./images/bg.png";
 
-        bgImage.src = "./images/bg.png";
 
-var approachRate;
-var yOffset = 65;
+//define Beatmap notes
 var hitObjects = new Array(120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,300,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120);
 var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,0,1,0,0,0,0,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1);
+
+//draw beatmap notes(Taikos)
+var approachRate;
+var yOffset = 65;
 var dist= 250;
 var isover = false;
 function drawTaiko(){
@@ -75,16 +79,16 @@ function drawTaiko(){
 }
 
 
-
 //leapmotion reader
+
+//helper function to display position data
 function concatData(id, data) {
   return id + ": " + data + "<br>";
 }
-
+//helper function to display position data
 function concatJointPosition(position) {
   return position[0] + ", " + position[1] + ", " + position[2] + "<br>";
 }
-
 
 var output = document.getElementById('output');
 var frameString = "", handString = "", fingerString = "";
@@ -326,12 +330,12 @@ function finiteStateMachineF(position){
     return 0;
   }
   // console.log(position);
-  if(position[1][1] - position[0][1] > 30)//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 25)//need more consideration on identifying patterns
     {
       // console.log("up");
         upF = true;//change the state
     }
-  else if(position[0][1] - position[1][1] > 30)//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 25)//need more consideration on identifying patterns
     {
         downF = true;//change the state
     }
@@ -350,11 +354,11 @@ function finiteStateMachineJ(position){
     // console.log("second didnt passed");
     return 0;
   }
-  if(position[1][1] - position[0][1] > 30)//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 25)//need more consideration on identifying patterns
     {
         upJ = true;//change the state
     }
-  else if(position[0][1] - position[1][1] > 30)//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 25)//need more consideration on identifying patterns
     {
         downJ = true;//change the state
     }
@@ -373,11 +377,11 @@ function finiteStateMachineE(position){
     // console.log("second didnt passed");
     return 0;
   }
-  if(position[1][1] - position[0][1] > 30)//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 25)//need more consideration on identifying patterns
     {
         upE = true;//change the state
     }
-  else if(position[0][1] - position[1][1] > 30)//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 25)//need more consideration on identifying patterns
     {
         downE = true;//change the state
     }
@@ -396,11 +400,11 @@ function finiteStateMachineI(position){
     // console.log("second didnt passed");
     return 0;
   }
-  if(position[1][1] - position[0][1] > 30)//need more consideration on identifying patterns
+  if(position[1][1] - position[0][1] > 25)//need more consideration on identifying patterns
     {
         upI = true;//change the state
     }
-  else if(position[0][1] - position[1][1] > 30)//need more consideration on identifying patterns
+  else if(position[0][1] - position[1][1] > 25)//need more consideration on identifying patterns
     {
         downI = true;//change the state
     }
