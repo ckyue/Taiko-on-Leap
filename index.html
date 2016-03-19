@@ -4,11 +4,15 @@
 	<title>Taiko on Leap</title>
 	<link href="materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-	<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico"/>
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
 </head>
 <body>
 	<canvas id="playground" width="1440" height="900"></canvas>
-	<canvas id="beats" width="1440" height="240" style="position:absolute; top:150px; left:120px"></canvas>
+	<canvas id="beats" width="1440" height="240" style="position:absolute; top:150px; left:112px"></canvas>
+	<button id="start">Start</button>
+	<p id="score">0</p>
 	<script type="text/javascript" src="bundle.js"></script>
+	<audio id="red" src="./sounds/red.mp3"></audio>
+	<audio id="blue" src="./sounds/blue.mp3"></audio>
 </body>
 </html>

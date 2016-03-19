@@ -1,4 +1,9 @@
-import Example from "./Example";
+import Example from "./js/game.js";
 
-var x = new Example();
-x.speak();
+
+document.getElementById("start").addEventListener("click", play);
+
+function play(){
+  // alert('play');
+
+}
