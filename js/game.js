@@ -172,7 +172,7 @@ Leap.loop(options, function(frame) {
     drawStatus(handType, currentPositionValues);
   }
 
-  output.innerHTML = frameString;
+  // output.innerHTML = frameString;
 
 });
 
@@ -294,7 +294,7 @@ function calculatePosition(hand, position, dist){
       // distance = checkHit();
       if(dist<50 && dist>20){
 				score++;
-				document.getElementById("score").innerHTML = score;
+				// document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
         drawScore(score);
 			}
@@ -316,7 +316,7 @@ function calculatePosition(hand, position, dist){
       drawRed();
       if(dist<50 && dist>20){
         score++;
-        document.getElementById("score").innerHTML = score;
+        // document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
         drawScore(score);
       }
@@ -338,7 +338,7 @@ function calculatePosition(hand, position, dist){
       drawBlue();
       if(dist<50 && dist>20){
         score++;
-        document.getElementById("score").innerHTML = score;
+        // document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
         drawScore(score);
       }
@@ -360,7 +360,7 @@ function calculatePosition(hand, position, dist){
       drawBlue();
       if(dist<50 && dist>20){
         score++;
-        document.getElementById("score").innerHTML = score;
+        // document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
         drawScore(score);
       }
