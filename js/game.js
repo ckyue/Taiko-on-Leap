@@ -22,16 +22,15 @@ blueTaiko.onload = function (){
 var beatsCtx = beatsCanvas.getContext("2d");
 beatsCtx.beginPath();
 beatsCtx.moveTo(150,300)
-beatsCtx.lineTo(150,0)
+beatsCtx.lineTo(150,100)
 beatsCtx.strokeStyle = "#000"
 beatsCtx.stroke()
 
 
 var n;
 var approachRate;
-var vy = 60;
-var hitObjects = new Array(180,180,120,180,180,180,120,180,120,180,
-180,180,120,180,120,180,120,120,180,180,
+var vy = 40;
+var hitObjects = new Array(180,180,120,180,180,180,120,180,120,180,180,180,120,180,120,180,120,120,180,180,
 180,180,120,180,180,180,120,180,120,180,
 180,180,120,180,120,180,120,120,180,180,
 180,180,120,180,180,180,120,180,120,180,
@@ -144,12 +143,12 @@ export function drawTaiko(){
       beatsCtx.drawImage(blueTaiko,approachRate,vy);
     }
     approachRate += hitObjects[n]
-    if(approachRate>500){
+    if(approachRate>1300){
       break;
     }
   }
   if(!isover){
-    setTimeout(drawTaiko,1);
+    setTimeout(drawTaiko,5);
   }
 }
 
@@ -246,7 +245,6 @@ function drawBlue(){
 function calculatePosition(hand, position){
   // console.log(positions[0]);
   // console.log(hand);
-
   //F
   if(hand == 'left' && position[0] <= 0 && position[2] >= -70){
     savedPositionF[counterF] = position;
@@ -260,9 +258,9 @@ function calculatePosition(hand, position){
       console.log("F pressed");
       document.getElementById("red").play();
       drawRed();
-      if(dist<60 && dist>50 && typeOfTaiko[0]==0){
-				score++
-				document.getElementById("score").value = score;
+      if(dist<350 && dist>250){
+				score++;
+				document.getElementById("score").innerHTML = score;
 			}
     }
     counterF++;
@@ -280,9 +278,9 @@ function calculatePosition(hand, position){
       console.log("J pressed");
       document.getElementById("red").play();
       drawRed();
-      if(dist<60 && dist>50 && typeOfTaiko[0]==0){
-        score++
-        document.getElementById("score").value = score;
+      if(dist<350 && dist>250){
+        score++;
+        document.getElementById("score").innerHTML = score;
       }
     }
     counterJ++;
@@ -300,9 +298,9 @@ function calculatePosition(hand, position){
       console.log("E pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<60 && dist>50 && typeOfTaiko[0]==1){
-        score++
-        document.getElementById("score").value = score;
+      if(dist<350 && dist>250){
+        score++;
+        document.getElementById("score").innerHTML = score;
       }
     }
     counterF++;
@@ -320,9 +318,9 @@ function calculatePosition(hand, position){
       console.log("I pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<60 && dist>50 && typeOfTaiko[0]==1){
-        score++
-        document.getElementById("score").value = score;
+      if(dist<550 && dist>350){
+        score++;
+        document.getElementById("score").innerHTML = score;
       }
     }
     counterI++;
