@@ -11,33 +11,45 @@ var scoreRef = scoreboard.child('score');
 var scoreBoardCanvas = document.getElementById('scoreboard');
 var scoreBoardCtx = scoreBoardCanvas.getContext('2d');
 scoreBoardCtx.font = "20px Arial";
-scoreBoardCtx.fillStyle = "#E6377B";
-var scoreBoardStack = new Array();
+scoreBoardCtx.fillStyle = "#fff";
 
 function drawScoreBoard(){
   // alert(score)
-  var score = scoreBoardStack.pop();
   scoreBoardCtx.clearRect(0,0,scoreBoardCanvas.width,scoreBoardCanvas.height);
+  scoreBoardCtx.fillText("Scoreboard", 10, 30);
+  // console.log(scoreBoardStack.length);
+  for(let i = 1; i <= scoreBoardStack.length; i++){
+    //parse object
+    var scoreAndName = scoreBoardStack.pop();
+    let score;
+    let name;
+    for(var n in scoreAndName){
+      name = n;
+      score = scoreAndName[n];
+    }
+    // console.log(JSON.stringify(score));
+    let scoreString = i + "   " + name + "   " + score;
+    scoreBoardCtx.fillText(scoreString, 10, i*35+50);
+  }
   //if not undefine or null?
-  scoreBoardCtx.fillText(score, 0, 35);
 
-
-  //pop it and draw it onto scoreboard
+  // console.log(JSON.stringify(scoreBoardStack));
 }
 
+var scoreBoardStack = new Array();
 function scoreStack(name, score){
   //implement a stack to revese data;
   //push to stack;
-  scoreBoardStack.push({
-    name: score
-  });
+  var bufferData = {};
+  bufferData[name] = score;
+  scoreBoardStack.push(bufferData);
 }
 scoreRef.orderByValue().on('value',function(snapshot){
     snapshot.forEach(function(data){
       var key = data.key();
       var value = data.val();
       scoreStack(key,value);
-      // console.log("Name: " + data.key() + "scored " + data.val());
+      // console.log("Name: " + data.key() + " scored " + data.val());
     });
     drawScoreBoard();
 });
