@@ -423,7 +423,7 @@ function calculatePosition(hand, position, dist){
       document.getElementById("red").play();
       drawRed();
       // distance = checkHit();
-      if(dist<70 && dist>20){
+      if(dist<65 && dist>20){
 				score++;
 				// document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
@@ -445,7 +445,7 @@ function calculatePosition(hand, position, dist){
       // console.log("J pressed");
       document.getElementById("red").play();
       drawRed();
-      if(dist<70 && dist>20){
+      if(dist<65 && dist>20){
         score++;
         // document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
@@ -467,7 +467,7 @@ function calculatePosition(hand, position, dist){
       // console.log("E pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<70 && dist>20){
+      if(dist<65 && dist>20){
         score++;
         // document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
@@ -489,7 +489,7 @@ function calculatePosition(hand, position, dist){
       // console.log("I pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<70 && dist>20){
+      if(dist<65 && dist>20){
         score++;
         // document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
