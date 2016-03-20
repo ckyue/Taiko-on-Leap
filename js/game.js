@@ -1,3 +1,48 @@
+//scoredboard
+var Firebase = require('firebase');
+var scoreboard = new Firebase('https://taiko-on-leap.firebaseio.com/');
+
+var scoreRef = scoreboard.child('score');
+// scoreRef.set({
+//   caonima: "22",
+//   ggwp: "33",
+//   sb: "11"
+// });
+var scoreBoardCanvas = document.getElementById('scoreboard');
+var scoreBoardCtx = scoreBoardCanvas.getContext('2d');
+scoreBoardCtx.font = "20px Arial";
+scoreBoardCtx.fillStyle = "#E6377B";
+var scoreBoardStack = new Array();
+
+function drawScoreBoard(){
+  // alert(score)
+  var score = scoreBoardStack.pop();
+  scoreBoardCtx.clearRect(0,0,scoreBoardCanvas.width,scoreBoardCanvas.height);
+  //if not undefine or null?
+  scoreBoardCtx.fillText(score, 0, 35);
+
+
+  //pop it and draw it onto scoreboard
+}
+
+function scoreStack(name, score){
+  //implement a stack to revese data;
+  //push to stack;
+  scoreBoardStack.push({
+    name: score
+  });
+}
+scoreRef.orderByValue().on('value',function(snapshot){
+    snapshot.forEach(function(data){
+      var key = data.key();
+      var value = data.val();
+      scoreStack(key,value);
+      // console.log("Name: " + data.key() + "scored " + data.val());
+    });
+    drawScoreBoard();
+});
+
+
 var controller = new Leap.Controller();
 
 controller.on('deviceConnected', function() {
@@ -51,9 +96,9 @@ bgImage.src = "./images/bg.png";
 
 //define Beatmap notes
 var hitObjects = new Array(120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,300,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120);
-var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1);
+// var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1);
 //,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,0,1,0,0,0,0,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1
-
+var typeOfTaiko = new Array(0,1);
 //draw beatmap notes(Taikos)
 var approachRate;
 var yOffset = 65;
@@ -66,8 +111,11 @@ function drawTaiko(){
   approachRate = dist;
   if(approachRate<0){
     if(typeOfTaiko.length < 2){
-      prompt("Congratulations! Enter Your Name HERE!!", "Wearhack Waterloo 2016");
+      playerName = prompt("Congratulations! Enter Your Name HERE!!", "Wearhack Waterloo 2016");
       //send to database;
+      var bufferData = {};
+      bufferData[playerName] = score;
+      scoreRef.update(bufferData);
       isover = true;
       return;
     }
