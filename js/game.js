@@ -6,16 +6,18 @@
 //     form_data.append("file", file_data);
 //     alert(form_data);
 //     $.ajax({
-//                 url: "http://ec2-52-36-8-247.us-west-2.compute.amazonaws.com/music.php",
+//                 url: "./music.php",
 //                 dataType: 'text',
 //                 cache: false,
 //                 contentType: false,
 //                 processData: false,
 //                 data: form_data,
 //                 type: 'post',
-//                 success: function(php_script_response){
-//                     alert(php_script_response); // display response from the PHP script, if any
-//                 }
+//                 // success: function(php_script_response){
+//                 //     alert(php_script_response); // display response from the PHP script, if any
+//                 // }
+//                 success:
+//                 console.log("success");
 //      });
 // });
 //
@@ -23,7 +25,7 @@
 // data.append('qwe', 'asds');
 //
 // var xhr = new XMLHttpRequest();
-// xhr.open('POST', 'http://ec2-52-36-8-247.us-west-2.compute.amazonaws.com/music.php', true);
+// xhr.open('POST', './music.php', true);
 // xhr.onload = function () {
 //     // do something to response
 //     console.log(this.responseText);
