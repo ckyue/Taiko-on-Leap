@@ -1,3 +1,72 @@
+// upload music
+// $("#upload").on("click", function() {
+//     // var file_data = $("#file").prop("files")[0];
+//     var file_data = $("#file")[0];
+//     var form_data = new FormData();
+//     form_data.append("file", file_data);
+//     alert(form_data);
+//     $.ajax({
+//                 url: "http://ec2-52-36-8-247.us-west-2.compute.amazonaws.com/music.php",
+//                 dataType: 'text',
+//                 cache: false,
+//                 contentType: false,
+//                 processData: false,
+//                 data: form_data,
+//                 type: 'post',
+//                 success: function(php_script_response){
+//                     alert(php_script_response); // display response from the PHP script, if any
+//                 }
+//      });
+// });
+//
+// var data = new FormData();
+// data.append('qwe', 'asds');
+//
+// var xhr = new XMLHttpRequest();
+// xhr.open('POST', 'http://ec2-52-36-8-247.us-west-2.compute.amazonaws.com/music.php', true);
+// xhr.onload = function () {
+//     // do something to response
+//     console.log(this.responseText);
+// };
+// xhr.send(data);
+
+document.querySelector('#afile').addEventListener('change', function(e) {
+  var file = this.files[0];
+  console.log(file);
+  var fd = new FormData();
+  fd.append("file", file);
+  // console.log(toString(fd));
+  // These extra params aren't necessary but show that you can include other data.
+  // fd.append("tktkt", "ktktkt");
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://ec2-52-36-8-247.us-west-2.compute.amazonaws.com/music.php', true);
+
+  xhr.upload.onprogress = function(e) {
+    if (e.lengthComputable) {
+      var percentComplete = (e.loaded / e.total) * 100;
+      console.log(percentComplete + '% uploaded');
+    }
+  };
+  xhr.onload = function() {
+    console.log(this.status);
+
+    if (this.status == 200) {
+      // var resp = JSON.parse(this.response);
+      var resp = this.response;
+      console.log('From server:', resp);
+      // var image = document.createElement('img');
+      // image.src = resp.dataUrl;
+      // document.body.appendChild(image);
+    };
+  };
+  xhr.send(fd);
+}, false);
+
+//define Beatmap notes
+var hitObjects = new Array(120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,300,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120);
+var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1);
+var dist= 350;
+
 //scoredboard
 var Firebase = require('firebase');
 var scoreboard = new Firebase('https://taiko-on-leap.firebaseio.com/');
@@ -106,15 +175,11 @@ bgImage.src = "./images/bg.png";
 
 
 
-//define Beatmap notes
-var hitObjects = new Array(120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,60,120,120,120,60,120,60,120,120,120,60,120,60,120,60,60,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,300,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120,120);
-var typeOfTaiko = new Array(0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1);
 //,0,0,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,0,1,0,0,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,0,1,0,0,0,0,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1,1,0,1,1,0,1,0,1
 // var typeOfTaiko = new Array(0,1);
 //draw beatmap notes(Taikos)
 var approachRate;
 var yOffset = 65;
-var dist= 350;
 var isover = false;
 var playerName;
 
@@ -196,7 +261,7 @@ var fingerStatusString;
 
 function drawStatus(hand, finger){
   // alert(score)
-  console.log(finger);
+  // console.log(finger);
   leapStatusCtx.clearRect(0,0,leapStatusCanvas.width,leapStatusCanvas.height);
   statusString = "LeapMotion Status: " + "Connected";
   leapStatusCtx.fillText(statusString, 0, 30);
@@ -356,7 +421,7 @@ function calculatePosition(hand, position, dist){
       document.getElementById("red").play();
       drawRed();
       // distance = checkHit();
-      if(dist<50 && dist>20){
+      if(dist<70 && dist>20){
 				score++;
 				// document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
@@ -378,7 +443,7 @@ function calculatePosition(hand, position, dist){
       // console.log("J pressed");
       document.getElementById("red").play();
       drawRed();
-      if(dist<50 && dist>20){
+      if(dist<70 && dist>20){
         score++;
         // document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
@@ -400,7 +465,7 @@ function calculatePosition(hand, position, dist){
       // console.log("E pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<50 && dist>20){
+      if(dist<70 && dist>20){
         score++;
         // document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);
@@ -422,7 +487,7 @@ function calculatePosition(hand, position, dist){
       // console.log("I pressed");
       document.getElementById("blue").play();
       drawBlue();
-      if(dist<50 && dist>20){
+      if(dist<70 && dist>20){
         score++;
         // document.getElementById("score").innerHTML = score;
         playScoreSoundEffect(score);

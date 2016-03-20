@@ -1,5 +1,5 @@
 # Taiko-on-Leap
-
+Disclaimer: I DO NOT OWN ANY AUDIO AND IMAGE IN THIS APP, ill put them down if you contact me.
 To-Do List:
 <p><strike>get LeapMotion tested</strike></p>
 <p><strike>Control the canvas with LeapMotion</strike></p>

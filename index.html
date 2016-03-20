@@ -6,15 +6,20 @@
 	<link href="style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
 	<script src="./lib/leap-0.6.4.js"></script>
+	<script src="./lib/jquery-2.1.1.min.js"></script>
 	<!-- <script src="https://js.leapmotion.com/leap-0.6.4.js"></script> -->
 </head>
 <body>
 	<canvas id="playground" width="1440" height="900"></canvas>
 	<canvas id="beats" width="1185" height="240" style="position:absolute; top:250px; left:263px"></canvas>
-	<canvas id="drum"  width="350" height="350" style="position:absolute; top:500px; left:600px"></canvas>
+	<canvas id="drum"  width="350" height="350" style="position:absolute; top:500px; left:530px"></canvas>
 	<canvas id="score"  width="430" height="150" style="position:absolute; top:500px; left:50px"></canvas>
 	<canvas id="leapStatus"  width="350" height="150" style="position:absolute; top:660px; left:50px"></canvas>
 	<canvas id="scoreboard"  width="350" height="350" style="position:absolute; top:500px; left:1000px"></canvas>
+	<input type="file" id="afile" name="afile">
+	<!-- <form>
+    <button id="upload">Upload</button>
+	</form> -->
 	<!-- <button id="start">Start</button> -->
 	<!-- <p id="score">0</p> -->
 	<!-- <p id="output"></p> -->
@@ -39,6 +44,7 @@
 		window.onload = function(){
 		  document.getElementById("bg-song").play();
 		}
+
 	</script>
 </body>
 </html>
