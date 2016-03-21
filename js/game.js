@@ -365,45 +365,46 @@ function calculatePosition(hand, position, dist){
 
     console.log(score);
     switch(score){
-      case 10:
+      case 15:
         document.getElementById("comboburst-0").play();
         break;
-        case 20:
+        case 30:
           document.getElementById("comboburst-1").play();
           break;
-          case 30:
+          case 45:
             document.getElementById("comboburst-2").play();
             break;
-            case 40:
+            case 60:
               document.getElementById("comboburst-3").play();
               break;
-              case 50:
+              case 75:
                 document.getElementById("comboburst-4").play();
                 break;
-                case 60:
+                case 90:
                   document.getElementById("comboburst-5").play();
                   break;
-                  case 65:
+                  case 105:
                     document.getElementById("comboburst-6").play();
                     break;
-                    case 70:
+                    case 120:
                       document.getElementById("comboburst-7").play();
                       break;
-                      case 75:
+                      case 135:
                         document.getElementById("comboburst-8").play();
                         break;
-                        case 80:
+                        case 150:
                           document.getElementById("comboburst-9").play();
                           break;
-                          case 85:
-                            document.getElementById("comboburst-10").play();
-                            break;
-                            case 90:
-                              document.getElementById("comboburst-11").play();
-                              break;
-                              case 95:
-                                document.getElementById("comboburst-12").play();
-                                break;
+                          // case 85:
+                          //   document.getElementById("comboburst-10").play();
+                          //   break;
+                          //   case 90:
+                          //     document.getElementById("comboburst-11").play();
+                          //     break;
+                          //     case 95:
+                          //       document.getElementById("comboburst-12").play();
+                          //       break;
+                          
 
     }
   }
