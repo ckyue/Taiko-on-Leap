@@ -13,8 +13,8 @@ Connect your computer with Leap Motion.
 Open index.html in the root directory of the file.
 Ready to play.
 
-<img src = "./images/screenshot1.png">
-<img src = "./images/screenshot2.png">
+<img src = "./Images/screenshot1.png">
+<img src = "./Images/screenshot2.png">
 
 Disclaimer: Audio and Images in this app are downloaded from the internet, I DO NOT OWN ANY AUDIO AND IMAGE IN THIS APP.
 
